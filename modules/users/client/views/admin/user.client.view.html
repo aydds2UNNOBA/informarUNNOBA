@@ -1,0 +1,69 @@
+<section>
+  <div class="page-header">
+    <div class="row">
+      <div class="col-md-6">
+        <h1 data-ng-bind="user.username"></h1>
+      </div>
+      <div class="col-md-4">
+        <a class="btn btn-primary" data-ng-click="activar();" ng-if="user._id !== authentication.user._id"
+                                  ng-show="!user.isActive">
+          <acronym title="Activar"><i class="glyphicon glyphicon-ok"> Activar</i></acronym>
+        </a>
+        <a class="btn btn-primary" data-ng-click="desactivar();" ng-if="user._id !== authentication.user._id"
+                                  ng-show="user.isActive">
+          <acronym title="Desactivar"><i class="glyphicon glyphicon-remove"> Desactivar</i></acronym>
+        </a>
+        <a class="btn btn-primary" data-ui-sref="admin.user-edit({userId: user._id})">
+          <acronym title="Modificar"><i class="glyphicon glyphicon-edit"> Editar</i></acronym>
+        </a>
+        <a class="btn btn-primary" data-ng-click="remove();" ng-if="user._id !== authentication.user._id">
+          <acronym title="Eliminar"><i class="glyphicon glyphicon-trash"> Eliminar</i></acronym>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-3"><strong>Nombre</strong></div>
+        <div class="col-md-6" data-ng-bind="user.firstName"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><strong>Apellido</strong></div>
+        <div class="col-md-6" data-ng-bind="user.lastName"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><strong>DNI</strong></div>
+        <div class="col-md-6" data-ng-bind="user.dni"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><strong>Email</strong></div>
+        <div class="col-md-6" data-ng-bind="user.email"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><strong>Ciudad</strong></div>
+        <div class="col-md-6" data-ng-bind="user.ciudad"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><strong>Teléfono</strong></div>
+        <div class="col-md-6" data-ng-bind="user.telefono"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><strong>Creado</strong></div>
+        <div class="col-md-6" data-ng-bind="user.created | date:'MM/dd/yyyy'""></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><strong>Permisos</strong></div>
+        <div class="col-md-6" data-ng-bind="user.roles"></div>
+      </div>
+    </div>
+  </div>
+</section>

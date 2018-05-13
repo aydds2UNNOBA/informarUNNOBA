@@ -1,0 +1,20 @@
+<section data-ng-controller="SettingsController">
+  <div class="page-header">
+    <h1>Ajustes de Cuenta</h1>
+  </div>
+  <div class="row">
+    <nav class="col-sm-3 col-md-3">
+      <ul class="nav nav-pills nav-stacked">
+        <li data-ui-sref-active="active">
+          <a data-ui-sref="settings.profile">Modificar Información de Usuario</a>
+        </li>
+        <li data-ui-sref-active="active" data-ng-show="user.provider === 'local'">
+          <a data-ui-sref="settings.password">Cambiar Contraseña</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="col-sm-9 col-md-8 settings-view">
+      <div data-ui-view></div>
+    </div>
+  </div>
+</section>

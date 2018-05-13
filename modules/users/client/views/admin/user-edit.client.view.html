@@ -1,0 +1,68 @@
+<section >
+  <div class="page-header">
+    <h1>Usuario: <span style="color: #2641cc" data-ng-bind="user.username"</span</h1>
+  </div>
+
+  
+  <div class="col-md-12" style="align-content: center;">
+    <form name="userForm" class="form-horizontal" data-ng-submit="update()" novalidate>
+      <fieldset>
+        <div class="form-group">
+          <label class="control-label" for="firstName">Nombre</label>
+          <div class="controls">
+            <input name="firstName" type="text" data-ng-model="user.firstName" id="firstName" class="form-control" placeholder="Nombre" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="lastName">Apellido</label>
+          <div class="controls">
+            <input type="text" name="lastName" data-ng-model="user.lastName" id="lastName" class="form-control" placeholder="Apellido" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="dni">DNI</label>
+          <div class="controls">
+            <input type="number" name="dni" data-ng-model="user.dni" id="dni" class="form-control" placeholder="DNI" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="email">Email</label>
+          <div class="controls">
+            <input type="text" name="email" data-ng-model="user.email" id="email" class="form-control" placeholder="Email" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="ciudad">Ciudad</label>
+          <div class="controls">
+            <select name="ciudad" class="form-control" placeholder="Ciudad" id="ciudad" data-ng-model="user.ciudad"
+          ng-options="city for city in citys">
+          </select>
+            <!-- <input type="text" name="ciudad" data-ng-model="user.ciudad" id="ciudad" class="form-control" placeholder="Ciudad" /> -->
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="telefono">Teléfono</label>
+          <div class="controls">
+            <input type="number" name="telefono" data-ng-model="user.telefono" id="telefono" class="form-control" placeholder="Teléfono" />
+          </div>
+        </div>
+        <div class="form-group" >
+          <label  class="control-label" for="permiso_usuario">Permisos</label>
+          <div class="controls">
+            <select name="permiso_usuario" class="form-control" placeholder="Permisos" id="sexo_usuario" data-ng-model="user.roles" ng-list>
+                  <option value="Femenino">user</option>
+                  <option value="Masculino">admin</option>
+                </select>
+            <!-- <acronym title="Separar por 'coma'"><input class="form-control" type="text" name="roles" data-ng-model="user.roles" id="roles" ng-list /></acronym> -->
+          </div>
+        </div>
+        <div class="form-group" align="center">
+          <input style="width: 150px;height: 40px;font-size: 20px;margin: 10px" type="submit" value="Modificar" class="btn btn-large btn-primary">
+        </div>
+        <div data-ng-show="error" class="text-danger">
+          <strong data-ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

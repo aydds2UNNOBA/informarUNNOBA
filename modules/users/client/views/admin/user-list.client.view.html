@@ -1,0 +1,33 @@
+<section>
+    
+    <h2 style="color:#73AD21;margin-bottom: 35px;margin-top: 10px;font-size: 40px;margin-top: 40px;" align="center">Usuarios registrados</h2>
+    
+   <h4 align="center" style="color: grey">Aqui podra consultar todos los usuarios registrados en el sistema.</h4>
+   <h4 style="color: grey" align="center">Puede utilizar el campo de busqueda para encontrarlos mas rapidamente. Puede tipear cualquier información referente al usuario para filtrarlos. Al seleccionar uno se mostraran mas detalles</h4>
+
+  <div class="page-header">
+    <div class="row" style="padding-top: 1em">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4" align="center" style="margin-top: 2em">
+        <label for="searchbar">Buscar usuarios</label>
+        <input id="searchbar" class="form-control col-md-4" type="text" data-ng-model="search" placeholder="Buscar" ng-change="figureOutItemsToDisplay()" />
+      </div>
+    </div>
+  </div>
+
+
+  <div class="list-group" align="center">
+    <div data-ng-repeat="user in pagedItems">
+    <a  data-ui-sref="admin.user({userId: user._id})" class="list-group-item">
+      <h3 style="color:#2641cc;" class="list-group-item-heading" data-ng-bind="user.username"></h3>
+      <p class="list-group-item-text" data-ng-bind="user.ciudad"></p>
+      <p class="list-group-item-text" data-ng-bind="user.email"></p>
+    </a>
+    
+  </div>
+</div>
+  <div align="center">
+  <pagination boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+  </div>
+</section>

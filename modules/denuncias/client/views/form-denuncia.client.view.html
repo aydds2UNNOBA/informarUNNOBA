@@ -1,0 +1,424 @@
+
+<head>
+  <style type="text/css">
+    h1{
+      text-align: center;
+      font-size: 40px;
+      color: #5ea5f4;
+      letter-spacing: 3px;
+      word-spacing: 10px;
+      padding-bottom: 15px;
+      margin-top: 50px;
+    }
+    h2{
+      color:#73AD21;margin-bottom: 35px;margin-top: 10px;font-size: 35px;
+    }
+    h3{
+      margin-top: 5px;
+      color: #73AD21;
+    }
+    div .roundBorder{
+      border-radius: 25px;border: 2px solid #2e8af0;padding: 12px;text-align: center;
+    }
+    div .innerContent{
+      font-size: 20px;
+    }
+    div .forSpan{
+      padding: 6px;
+      height: 2em;
+    }
+    input {
+      text-align: center;
+
+    }
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    th, td {
+        text-align: center;
+        padding: 8px;
+    }
+
+    tr:nth-child(even){
+      background-color: #f2f2f2;
+    }
+    
+
+
+  </style>
+
+
+
+</head>
+
+<section>
+
+
+
+  <div class="page-header">
+    <h1 align="center">{{vm.denuncia._id ? 'Modificar Planilla' : 'Planilla de Registro de Consultas Por Violencia'}}</h1>
+  </div>
+  
+  <div class="col-md-12">
+    <form name="vm.form.denunciaForm" class="form-horizontal" ng-submit="vm.save(vm.form.denunciaForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors >
+          <div class="col-md-12"> 
+
+
+            <!--*************************************MUNICIPIO*************************************-->
+            <div class="row roundBorder" style="margin-top: 10px">
+              <h3 align="center">Municipio</h3>
+                <div class="col-md-6 innerContent"> 
+                  <label style="color: grey;" class="control-label" for="hospital">Hospital</label>
+                  <input name="hospital" type="text" ng-model="vm.denuncia.hospital" id="hospital" class="form-control" placeholder="Hospital" style="border-color: #016cce;">
+                </div>
+                <div class="col-md-6 innerContent"> 
+                  <label style="color: grey;" class="control-label" for="centro_de_salud" style="color: grey;">Centro de Salud Nº</label>
+                  <input name="centro_de_salud" type="number" ng-model="vm.denuncia.centro_de_salud" id="centro_de_salud" class="form-control" placeholder="Centro de Salud Nº" style="border-color: #016cce;">
+                </div>
+            </div>
+
+            <!--*************************************PERSONALES*************************************-->
+            <div class="row roundBorder" style="margin-top: 20px">
+            <div class="row" style="margin-top: 10px">
+              <h3 id="datosPersonales" align="center">Datos Personales De La Víctima</h3>
+              <div class="col-md-3 innerContent" > 
+                <label style="color: grey;" class="control-label" for="dni_victima">DNI</label>
+                <input style="border-color: #016cce;" name="dni_victima" type="number" ng-model="vm.denuncia.dni_victima" id="dni_victima" class="form-control" placeholder="DNI">
+              </div>
+              <div class="col-md-3 innerContent"> 
+                <label style="color: grey;" class="control-label" for="sexo_victima">Sexo</label>
+                <select style="border-color: #016cce;" name="sexo_victima" class="form-control" placeholder="Sexo" id="sexo_victima" ng-model="vm.denuncia.sexo_victima">
+                  <option value="Femenino">Femenino</option>
+                  <option value="Masculino">Masculino</option>
+                </select>
+              </div>
+               <div class="col-md-3 innerContent"> 
+                <label style="color: grey;" class="control-label" for="edad_victima">Edad</label>
+                <input style="border-color: #016cce;" name="edad_victima" type="number" ng-model="vm.denuncia.edad_victima" id="edad_victima" class="form-control" placeholder="Edad">
+              </div>
+              <div class="col-md-3 innerContent"> 
+                <label style="color: grey;" class="control-label" for="estado_civil_victima">Estado Civil</label>
+                <select style="border-color: #016cce;" name="estado_civil_victima" class="form-control" placeholder="Estado Civil" id="estado_civil_victima" ng-model="vm.denuncia.estado_civil_victima" ng-options="ec for ec in est_civiles">
+                </select>
+              </div>
+              <div class="col-md-4 innerContent"> 
+                <label style="color: grey;" class="control-label" for="municipio_victima">Municipio</label>
+                <select style="border-color: #016cce;" name="municipio_victima" class="form-control" placeholder="Estado Civil" id="municipio_victima" ng-model="vm.denuncia.municipio_victima" ng-change="municipioVictima()" ng-options="municipio for municipio in municipios">
+                </select>
+              </div>
+              <div class="col-md-4 innerContent"> 
+                <label style="color: grey;" class="control-label" for="localidad_victima">Localidad</label>
+                <select style="border-color: #016cce;" name="localidad_victima" class="form-control" id="localidad_victima" ng-model="vm.denuncia.localidad_victima" ng-options="localidadVictima for localidadVictima in localidadesVictima">
+                </select>
+              </div>
+              <div class="col-md-4 innerContent"> 
+                <label style="color: grey;" class="control-label" for="ocupacion_victima">Ocupación</label>
+                <select style="border-color: #016cce;" name="ocupacion_victima" class="form-control" id="ocupacion_victima" ng-model="vm.denuncia.ocupacion_victima" ng-options="ocupacion for ocupacion in ocupaciones_victima">
+                </select>
+              </div>
+            </div>
+            <br>
+            <hr style="border-style: solid; border-color: #3594ec">
+            <div class="row" style="margin-top: 20px">
+              <h3 align="center" style="font-size: 22px"><i>En caso de que el consultante no sea la víctima, completar los siguientes datos</i></h3>
+              <div class="col-md-4 innerContent"> 
+                <label style="color: grey;" class="control-label" for="dni_consultante">DNI</label>
+                <input style="border-color: #016cce;" name="dni_consultante" type="number" ng-model="vm.denuncia.dni_consultante" id="dni_consultante" class="form-control" placeholder="DNI">
+              </div>
+              <div class="col-md-4 innerContent"> 
+                <label style="color: grey;" class="control-label" for="municipio_consultante">Municipio</label>
+                <select style="border-color: #016cce;" name="municipio_consultante" class="form-control" id="municipio_consultante" ng-model="vm.denuncia.municipio_consultante" ng-change="municipioConsultante()" ng-options="municipio for municipio in municipios">
+                </select>
+              </div>
+              <div class="col-md-4 innerContent"> 
+                <label style="color: grey;" class="control-label" for="localidad_consultante">Localidad</label>
+                <select style="border-color: #016cce;" name="localidad_consultante" class="form-control" id="localidad_consultante" ng-model="vm.denuncia.localidad_consultante" ng-options="localidadConsultante for localidadConsultante in localidadesConsultante">
+                </select>
+              </div>
+            </div>
+            </div>
+
+            <div class="row roundBorder" style="margin-top: 20px">
+            <h3 align="center">Acciones Realizadas Con La Víctima</h3>
+            <div class="col-md-12">
+              <div class="col-md-6 innerContent"> 
+                <label style="color: grey;" class="control-label" for="victima_internada_en">Internada en Sala de</label>
+                <input style="border-color: #016cce;" name="victima_internada_en" type="text" ng-model="vm.denuncia.victima_internada_en" id="victima_internada_en" class="form-control" placeholder="Internada en Sala de" >
+              </div>
+              <div class="col-md-6 innerContent"> 
+                <label style="color: grey;" class="control-label" for="victima_con_equipo_atencion">Orientada al Equipo Inter. de atención</label>
+                <input style="border-color: #016cce;" name="victima_con_equipo_atencion" type="text" ng-model="vm.denuncia.victima_con_equipo_atencion" id="victima_con_equipo_atencion" class="form-control" placeholder="Orientada al Equipo Interdiciplinario de atención a víctimas de violencia">
+              </div>
+              </div>
+              <div class="col-md-12">
+              <div class="col-md-6 innerContent"> 
+                <label style="color: grey;" class="control-label" for="victima_orientada_a">Orientada a los Servicio/s de</label>
+                <input style="border-color: #016cce;" name="victima_orientada_a" type="text" ng-model="vm.denuncia.victima_orientada_a" id="victima_orientada_a" class="form-control" placeholder="Orientada a los Servicio/s de" >
+              </div>
+              <div class="col-md-6 innerContent"> 
+                <label style="color: grey;" class="control-label" for="otros_sectores">Otros Sectores (especificar)</label>
+                <input style="border-color: #016cce;" name="otros_sectores" type="text" ng-model="vm.denuncia.otros_sectores" id="otros_sectores" class="form-control" placeholder="Otros Sectores">
+              </div>
+              </div>
+            </div>
+
+            <div class="row roundBorder" style="margin-top: 20px">
+              <h3 align="center">Observaciones</h3>
+              <!-- <label style="color: grey;font-size: 23px" class="control-label" for="observaciones" >Observaciones</label> -->
+              <input style="border-color: #016cce;height: 10em;text-align: left" autocomplete="off" name="observaciones" type="text" ng-model="vm.denuncia.observaciones" id="observaciones" class="form-control" placeholder="Cualquier observacion/recomendacion relevante" >
+            </div>
+
+
+            
+            <div class="row roundBorder" style="margin-top: 20px">
+              <div class="col-md-6" style="padding: 2em;border: 1px solid #016cce;height: 27em" align="left"> 
+              <h3 align="center">Área Receptora De La Consulta</h3>
+
+              <div class="row innerContent" style="margin-left: 2em">
+                <input style="border-color: #016cce;" type="checkbox" id="cbox_guardia" ng-false-value="''" ng-true-value="'Guardia'" ng-model="vm.denuncia.area_receptora"> 
+                <label style="font-style: italic" for="cbox_guardia">Guardia</label>
+              </div>
+              <div class="row innerContent" style="margin-left: 2em">
+                <input style="border-color: #016cce;" type="checkbox" id="cbox_consultorio" ng-false-value="''" ng-true-value="'Consultorio'" ng-model="vm.denuncia.area_receptora"> 
+                <label style="font-style: italic" for="cbox_consultorio">Consultorio/Servicio (especificar)</label>
+              </div>
+              <div class="row innerContent" style="margin-left: 2em">
+                <input style="border-color: #016cce;" type="checkbox" id="cbox_otros" ng-false-value="''" ng-true-value="'Otros'" ng-model="vm.denuncia.area_receptora"> 
+                <label style="font-style: italic;" for="cbox_otros">Otros (especificar)</label>
+              </div>
+              <div style="margin-top: 4.7em">
+                <label style="color: grey;" class="control-label" for="especificaciones">Especificar</label>
+                <input style="border-color: #016cce;height: 5em" name="especificaciones" type="text" ng-model="vm.denuncia.area_receptora_otros" id="especificaciones" class="form-control" placeholder="Otros - Especificar" ng-disabled="vm.checkBoxAreaReceptora()">
+              </div>
+              </div>
+
+
+              <div class="col-md-6" style="padding: 2em;border: 1px solid #016cce;height: 27em" align="left">
+              <h3 align="center">Motivo De La Consulta</h3>
+              <div class="row innerContent" style="margin-left: 2em"> 
+                <input style="border-color: #016cce;" type="checkbox" id="cbox_violencia_fisica" ng-change="motivoConsulta('Violencia Física')" ng-model="violenciaFisica">
+                <label style="font-style: italic;" for="cbox_violencia_fisica">Violencia Física</label>
+              </div>
+              <div class="row innerContent" style="margin-left: 2em"> 
+                <input style="border-color: #016cce;" type="checkbox" id="cbox_violencia_verbal" ng-change="motivoConsulta('Violencia Verbal y/o Psicológica')" ng-model="violenciaVerbal">
+                <label style="font-style: italic;" for="cbox_violencia_verbal">Violencia Verbal y/o Psicológica</label>
+              </div>
+              <div class="row innerContent" style="margin-left: 2em"> 
+                <input style="border-color: #016cce;" type="checkbox" id="cbox_violencia_sexual" ng-change="motivoConsulta('Violencia Sexual')" ng-model="violenciaSexual">
+                <label style="font-style: italic;" for="cbox_violencia_sexual">Violencia Sexual</label>
+              </div>
+              <div class="row innerContent" style="margin-left: 2em"> 
+                <input style="border-color: #016cce;" type="checkbox" id="cbox_violencia_economica" ng-change="motivoConsulta('Violencia Económica')" ng-model="violenciaEconomica"> 
+                <label style="font-style: italic;" for="cbox_violencia_economica">Violencia Económica</label>
+              </div>
+              <div class="row innerContent" style="margin-left: 2em">
+                <input style="border-color: #016cce;" type="checkbox" id="cbox_otros2" ng-change="motivoConsulta('Otros')" ng-model="violenciaOtros"> 
+                <label style="font-style: italic;" for="cbox_otros2">Otros (especificar)</label>
+              </div>
+              <div class="row"> 
+                <label style="color: grey;" class="control-label" for="especificaciones">Especificar</label>
+                <input style="border-color: #016cce;height: 5em" name="especificaciones" type="text" ng-model="vm.denuncia.motivo_consulta_otros" id="especificar" class="form-control" placeholder="Otros - Especificar" ng-disabled="vm.checkBoxMotivo()">
+              </div>
+              </div>
+            </div>
+
+            <div class="row roundBorder" style="margin-top: 20px">
+
+              <h3 align="center">Vínculo Con El Agresor</h3>
+
+              <div class="col-md-12" style="margin-top: 20px;border: 1px solid #016cce">
+                
+              <div class="col-md-3 innerContent"> 
+                <input style="border-color: #016cce;" type="checkbox" id="cbox_vinculo_esposo" ng-false-value="''" ng-true-value="'Esposo'" ng-model="vm.denuncia.vinculo_agresor">
+                <label style="font-style: italic;" for="cbox_vinculo_esposo">Esposo</label>
+              </div>
+              <div class="col-md-3 innerContent"> 
+                <input style="border-color: #016cce;" type="checkbox" id="cbox_vinculo_concubino" ng-false-value="''" ng-true-value="'Concubino'" ng-model="vm.denuncia.vinculo_agresor"> 
+                <label style="font-style: italic;" for="cbox_vinculo_concubino">Concubino</label>
+              </div>
+              <div class="col-md-3 innerContent"> 
+                <input style="border-color: #016cce;" type="checkbox" id="cbox_vinculo_novio" ng-false-value="''" ng-true-value="'Novio'" ng-model="vm.denuncia.vinculo_agresor"> 
+                <label style="font-style: italic;" for="cbox_vinculo_novio">Novio</label>
+              </div>
+              <div class="col-md-3 innerContent" style="border-left: 2px solid #016cce;">
+                <input style="border-color: #016cce;" type="checkbox" id="cbox_convive" ng-model="vm.denuncia.convive_agresor"> 
+                <label style="font-style: italic;font-size: 18px" for="cbox_convive">Convive con el agresor</label>
+              </div>
+
+                
+              </div>
+
+              <div class="col-md-12" style="margin-top: 20px;border: 1px solid #016cce;padding: 1em">
+
+              <div class="col-md-2 innerContent"> 
+                  <input style="border-color: #016cce;" type="checkbox" id="cbox_vinculo_familiar" ng-false-value="''" ng-true-value="'Familiar'" ng-model="vm.denuncia.vinculo_agresor"> 
+                  <label style="font-style: italic;" for="cbox_vinculo_familiar">Familiar</label>
+                </div>
+              <div class="col-md-4 innerContent">
+                <input style="border-color: #016cce;" name="familia_especificar" type="text" ng-model="vm.denuncia.vinculo_agresor_familia_especificar" id="familia_especificar" class="form-control" placeholder="Especificar parentesco" ng-disabled="vm.checkBoxVinculoFamiliar()">
+              </div>
+
+                
+              <div class="col-md-2 innerContent"> 
+                <input style="border-color: #016cce;" type="checkbox" id="cbox_vinculo_otros" ng-false-value="''" ng-true-value="'Otros'" ng-model="vm.denuncia.vinculo_agresor"> 
+                <label style="font-style: italic;" for="cbox_vinculo_otros">Otros</label>
+              </div>
+              <div class="col-md-4 innerContent">
+                <input style="border-color: #016cce;" name="otros_especificar" type="text" ng-model="vm.denuncia.vinculo_agresor_otros" id="otros_especificar" class="form-control" placeholder="Especficar relacion" ng-disabled="vm.checkBoxVinculoOtros()">
+              </div>
+              
+              </div>
+            
+            
+            
+          
+          <div class="row col-md-12" style="margin-top: 20px;">
+            <hr style="border-style: 1px solid; border-color: #3594ec">
+            <h3 align="center" style="font-size: 22px"><i>Complete En El Caso De Tener Hijos/as</i></h3>
+
+
+            <div class="col-md-6" align="center" style="margin-top: 2em;height: 10em;">
+              <div class="col-md-3 innerContent" style="margin-left: 4em">
+                <label style="color: grey;" class="control-label" for="hijo_sexo">Sexo</label>
+                <select style="border-color: #016cce;font-size: 20px;width: 8em" name="hijo_sexo" class="form-control" placeholder="Sexo" id="hijo_sexo" ng-model="sexo_hijo">
+                  <option value="Femenino">Femenino</option>
+                  <option value="Masculino">Masculino</option>
+                </select>
+              </div>
+
+                <div class="col-md-3 innerContent" style="margin-left: 5em ">
+                  <label style="color: grey;" class="control-label" for="hijo_edad">Edad</label>
+                  <input style="border-color: #016cce;width: 4em" type="number" name="hijo_edad" id="hijo_edad" ng-model="edad_hijo">
+                </div>
+
+                <div align="center">
+                    <button type="btn btn-info" style="margin-top: 2em;" class="btn btn-info" ng-click="vm.agregar(sexo_hijo, edad_hijo)">Agregar</button>
+                </div>
+              </div>
+
+
+              <div class="col-md-6" align="center" style="margin-top: 2em;height: 15em;overflow-y: scroll;">
+                
+                <table border="1px">
+                  <tr>
+                    <th>Indice</th>
+                    <th>Sexo</th>
+                    <th>Edad</th>
+                    <th>Accion</th>
+                  </tr>
+                  <tr ng-repeat="hijo in vm.denuncia.hijos">
+                    <td align="center"> {{ $index + 1 }} </td>
+                    <td align="center"> {{hijo.sexo}} </td>
+                    <td align="center"> {{hijo.edad}} </td>
+                    <td align="center"><button type="button" class="btn btn-default" ng-click="vm.eliminar($index)"> Eliminar </button></td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- <div class="row">
+              <div class="col-md-6 innerContent" align="center">
+                  <button type="button" class="btn btn-info" ng-click="vm.agregar(sexo_hijo, edad_hijo)">Agregar</button>
+                  
+              </div> -->
+            </div>
+            </div>
+            
+               
+          </div>
+        </div>
+          
+
+              <div class="row roundBorder" style="margin-top: 20px">
+
+                <div class="col-md-6" style="border: 1px solid #016cce;padding: 1em;height: 14em">
+                  <h3 align="center">Consultas Previas Al Sistema De Salud</h3>
+                  <div class="col-md-3 innerContent">
+                    <input style="border-color: #016cce;" type="checkbox" id="cbox_consultas_previas" ng-model="vm.denuncia.consultas_previas">
+                    <label style="font-style: italic;" for="cbox_consultas_previas">Si</label>
+                  </div>
+                  <div class="col-md-3 innerContent">
+                    <label  for="cbox_consultas_cantidad">Cantidad:</label>
+                  </div>
+                  <div class="col-md-4 innerContent">
+                    <select style="border-color: #016cce;" name="cbox_consultas_cantidad" placeholder="Cantidad" ng-disabled="vm.checkBoxConsultas()" class="form-control" id="cbox_consultas_cantidad" ng-model="vm.denuncia.consultas_cantidad">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                    </select> 
+                  </div>
+                </div>
+
+                 <div class="col-md-6" style="border: 1px solid #016cce;padding: 1em;height: 14em">
+                  <h3 align="center">Denuncias En Comisarias U Otros Organismos</h3>
+                  <div class="row">
+                  <div class="col-md-3 innerContent">
+                    <input style="border-color: #016cce;" type="checkbox" id="cbox_otras_denuncias" ng-model="vm.denuncia.otras_denuncias">
+                    <label style="font-style: italic;" for="cbox_otras_denuncias">Si</label>
+                  </div>
+                  <div class="col-md-3 innerContent">
+                    <label for="cbox_cuantas_denuncias">Cantidad</label>
+                  </div>
+                  <div class="col-md-4 innerContent">
+                    <select style="border-color: #016cce;" name="cbox_cuantas_denuncias" placeholder="Cuantas" ng-disabled="vm.checkBoxDenuncias()" class="form-control" id="cbox_cuantas_denuncias" ng-model="vm.denuncia.cuantas_denuncias">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select> 
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 1.5em;">
+                  <div class="innerContent" align="center">
+                    <label class="control-label" for="organismos_de_denuncias">Radicacion</label>
+                    <input style="border-color: #016cce;width: 30em"  name="organismos_de_denuncias" type="text" ng-model="vm.denuncia.organismos_de_denuncias" id="organismos_de_denuncias" class="form-control" placeholder="Dónde?" ng-disabled="vm.checkBoxDenuncias()">
+                  </div>
+                </div>
+                  </div>
+                </div>
+
+                <div class="row roundBorder" style="margin-top: 20px;border-color: green">
+                  <h3 align="center"  style="margin-top: 10px">Información Del Profesional</h3>
+                  <div class="row" align="center" style="padding-top: 2em;">
+                    <div class="col-md-6" >
+                      <label style="color: grey;font-size: 23px" class="control-label" for="nombre_profesional">Nombre de los/las Profesional/es</label>
+                      <input style="border-color: #016cce;" name="nombre_profesional" type="text" ng-change="nombresProfesionales()" ng-model="nombres_profesionales" id="nombre_profesional" class="form-control" aria-describedby="nombreProfesional" placeholder="Nombre de los/las Profesional/es">
+                      <small id="nombreProfesional" class="form-text text-muted">Nombres de los profesionales separados por coma</small>
+                    </div>
+                    <div class="col-md-6">
+                      <label style="color: grey;font-size: 23px" class="control-label" for="matricula_profesional">Nros. de Matrícula</label>
+                      <input style="border-color: #016cce;" name="matricula_profesional" ng-change="matriculasProfesionales()" type="text" ng-model="matriculas_profesionales" id="matricula_profesional" class="form-control" aria-describedby="matriculaProfesional" placeholder="Matrícula/s">
+                      <small id="matriculaProfesional" class="form-text text-muted">Matrículas de los profesionales separados por coma</small>
+                    </div>                    
+                  </div>
+                </div>
+              
+          </div>
+
+          
+      <div class="form-group" align="center" >
+          <button type="submit" class="btn" style="font-size: 2em;width: 5em;margin-right: 2em;background-color: #98d6e3;color: white;margin-top: 80px;margin-bottom: 80px">{{vm.denuncia._id ? 'Modificar' : 'Cargar'}}</button>
+          <button type="submit" class="btn" style="font-size: 2em;width: 5em;background-color: #e396a4;color: white;margin-top: 80px;margin-bottom: 80px"><a data-ui-sref="home">Cancelar</a></button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+        
+      </fieldset>
+
+    </form>
+</section>

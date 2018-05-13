@@ -1,0 +1,49 @@
+<section>
+
+  <h2 style="color:#73AD21;margin-bottom: 35px;margin-top: 10px;font-size: 40px;margin-top: 40px;" align="center">Centro de salud registrados</h2>
+
+  <h4 align="center" style="color: grey">Aqui podra consultar todos los centros de salud habilitados en el sistema.</h4>
+   <h4 style="color: grey" align="center">Puede utilizar el campo de busqueda para encontrarlos mas rapidamente. Puede tipear cualquier información referente al centro para filtrarlos. Al seleccionar uno se mostraran mas detalles</h4>
+
+   <div class="page-header">
+    <div class="row" style="padding-top: 1em">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4" align="center" style="margin-top: 2em">
+        <label for="searchbar">Buscar centros</label>
+        <input id="searchbar" class="form-control col-md-4" type="text" data-ng-model="search" placeholder="Buscar" ng-change="figureOutItemsToDisplay()" />
+      </div>
+    </div>
+  </div>
+
+
+  <div class="list-group" align="center">
+    <a ng-repeat="centro in vm.centros"
+       ui-sref="centros.view({ centroId: centro._id })"
+       class="list-group-item">
+      <!-- <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="centro.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="centro.user" ng-bind="centro.user.displayName"></span>
+        <span ng-if="!centro.user">Deleted User</span>
+      </small> -->
+      <h3 style="color:#2641cc;" class="list-group-item-heading" ng-bind="centro.name"></h3>
+      <div  class="row">
+      <p class="list-group-item-text" data-ng-bind="centro.responsable"></p>
+      <p class="list-group-item-text" data-ng-bind="centro.telefono_primario"></p>
+      <p class="list-group-item-text" data-ng-bind="centro.mail"></p>
+        
+      </div>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.centros.$resolved && !vm.centros.length">
+    Aun no hay centros cargados, <a ui-sref="centros.create">¿desea crear uno ahora?</a>?
+  </div>
+
+  <div align="center">
+  <pagination boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+  </div>
+
+</section>
+

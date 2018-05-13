@@ -1,0 +1,161 @@
+
+<head>
+  <style type="text/css">
+    h1{
+      text-align: center;
+      font-size: 40px;
+      color: #5ea5f4;
+      letter-spacing: 3px;
+      word-spacing: 10px;
+      padding-bottom: 15px;
+      margin-top: 50px;
+    }
+    h2{
+      color:#73AD21;margin-bottom: 35px;margin-top: 10px;font-size: 35px;
+    }
+    h3{
+      margin-top: 5px;
+      color: #73AD21;
+    }
+    div .roundBorder{
+      border-radius: 25px;border: 2px solid #2e8af0;padding: 12px;text-align: center;
+    }
+    div .innerContent{
+      font-size: 20px;
+    }
+    div .forSpan{
+      padding: 6px;
+      height: 2em;
+    }
+    input {
+      text-align: center;
+
+    }
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    th, td {
+        text-align: center;
+        padding: 8px;
+    }
+
+    tr:nth-child(even){
+      background-color: #f2f2f2;
+    }
+    
+
+
+  </style>
+
+
+
+</head>
+
+<section>
+  <div class="page-header">
+    <h1 style="color:#73AD21;margin-bottom: 5px;margin-top: 5px;font-size: 35px;" align="center">{{vm.centro._id ? 'Editar Centro de salud' : 'Registrar nuevo centro de salud'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.centroForm" class="form-horizontal" ng-submit="vm.save(vm.form.centroForm.$valid)" novalidate>
+      <fieldset>
+
+        <div class="row roundBorder" style="margin-top: 10px">
+             
+                <div class="col-md-6 innerContent"> 
+                  <label style="color: grey;" class="control-label" for="nombreCentro">Nombre</label>
+                  <input name="hospital" type="text" ng-model="vm.centro.name" id="nombreCentro" class="form-control" placeholder="Nombre completo del centro" style="border-color: #016cce;" required>
+                  
+                </div>
+                <div class="col-md-6 innerContent"> 
+                  <label style="color: grey;" class="control-label" for="numeroCentro">Numero</label>
+                  <input required name="numeroCentro" type="number" ng-model="vm.centro.numero" id="numeroCentro" class="form-control" placeholder="Numero del centro" style="border-color: #016cce;">
+                </div>
+
+                <div class="col-md-6 innerContent" style="margin-top: 15px"> 
+                  <label style="color: grey;" class="control-label" for="municipioCentro">Municipio</label>
+                  <input required name="municipioCentro" type="text" ng-model="vm.centro.municipio_centro" id="municipioCentro" class="form-control" placeholder="Municipio al que pertenece" style="border-color: #016cce;">
+                </div>
+              <div class="col-md-6 innerContent" style="margin-top: 15px"> 
+                <label style="color: grey;" class="control-label" for="localidadCentro">Localidad</label>
+                <input required name="localidadCentro" type="text" ng-model="vm.centro.localidad_centro" id="localidadCentro" class="form-control" placeholder="Localidad al que pertenece" style="border-color: #016cce;">
+
+              </div>
+              <div class="col-md-4 innerContent" style="margin-top: 15px"> 
+                <label style="color: grey;" class="control-label" for="barrioCentro">Barrio</label>
+                <input required name="barrioCentro" type="text" ng-model="vm.centro.barrio" id="barrioCentro" class="form-control" placeholder="Barrio donde se ubica" style="border-color: #016cce;">
+
+              </div>
+              <div class="col-md-4 innerContent" style="margin-top: 15px"> 
+                <label style="color: grey;" class="control-label" for="calleCentro">Calle</label>
+                <input required name="calleCentro" type="text" ng-model="vm.centro.calle" id="calleCentro" class="form-control" placeholder="Calle donde se ubica" style="border-color: #016cce;">
+
+              </div>
+              <div class="col-md-4 innerContent" style="margin-top: 15px"> 
+                <label style="color: grey;" class="control-label" for="alturaCentro">Altura</label>
+                <input required name="alturaCentro" type="text" ng-model="vm.centro.altura" id="alturaCentro" class="form-control" placeholder="Altura de la calle" style="border-color: #016cce;">
+
+              </div>
+
+              <div class="col-md-4 innerContent" style="margin-top: 15px"> 
+                <label style="color: grey;" class="control-label" for="telefonoCentro">Telefono principal</label>
+                <input required name="telefonoCentro" type="number" ng-model="vm.centro.telefono_primario" id="telefonoCentro" class="form-control" placeholder="Principal telefono de contacto" style="border-color: #016cce;">
+
+              </div>
+              <div class="col-md-4 innerContent" style="margin-top: 15px"> 
+                <label style="color: grey;" class="control-label" for="mailCentro">Correo electronico</label>
+                <input required name="mailCentro" type="mail" ng-model="vm.centro.mail" id="mailCentro" class="form-control" placeholder="Correo electronico del centro, de tenerlo" style="border-color: #016cce;">
+
+              </div>
+              <div class="col-md-4 innerContent" style="margin-top: 15px"> 
+                <label style="color: grey;" class="control-label" for="responsableCentro">Responsable</label>
+                <input required name="responsableCentro" type="text" ng-model="vm.centro.responsable" id="responsableCentro" class="form-control" placeholder="Nombre y apellido del responsable" style="border-color: #016cce;">
+
+              </div>
+
+              <div class="col-md-12 innerContent" style="margin-top: 15px"> 
+                <label style="color: grey;" class="control-label" for="observacionesCentro">Observaciones especiales</label>
+                <input name="observacionesCentro" type="text" ng-model="vm.centro.observaciones" id="observacionesCentro" class="form-control" placeholder="Cualquier observacion que sea importante. Ej: entre que calles se ubica, problemas de acceso, etc." style="border-color: #016cce;height: 100px;text-align: left;">
+
+              </div>
+          </div>
+
+        <!-- <div class="form-group" show-errors>
+          <label class="control-label" for="name">Nombre</label>
+          <input style="margin-top: 10px" name="name" type="text" ng-model="vm.centro.name" id="name" class="form-control" placeholder="Nombre completo del centro" required>
+          <div ng-messages="vm.form.centroForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Este es un campo requerido</p>
+          </div>
+
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Numero</label>
+          <input style="margin-top: 10px" name="name" type="number" ng-model="vm.centro.name" id="name" class="form-control" placeholder="Numero del centro" required>
+          <div ng-messages="vm.form.centroForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Este es un campo requerido</p>
+          </div>
+          
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Direccion</label>
+          <input style="margin-top: 10px" name="name" type="text" ng-model="vm.centro.name" id="name" class="form-control" placeholder="Direccion" required>
+          <div ng-messages="vm.form.centroForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Este es un campo requerido</p>
+          </div>
+          
+        </div> -->
+
+        <div align="center" class="form-group">
+          <!-- <button type="submit" class="btn btn-primary">{{vm.centro._id ? 'Update' : 'Create'}}</button> -->
+          <button type="submit" style="margin-top: 20px;width: 150px;height: 40px;font-size: 15px" class="btn btn-large btn-primary">{{vm.centro._id ? 'Actualizar' : 'Registrar'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,84 @@
+<head>
+  <style type="text/css">
+    div .roundBorder{
+      border-radius: 25px;border: 2px solid #2e8af0;padding: 35px;text-align: center;margin-bottom: 60px;
+    }
+    h2{
+      color:#73AD21;margin-bottom: 35px;margin-top: 10px;font-size: 35px;
+    }
+    input{
+      text-align: center;
+    }
+  </style>
+</head>
+
+<div data-ng-controller="AuthenticationController" >
+  <h2 class="col-md-12 text-center" style="margin-top: 40px">Solicitud de Registro para usuario nuevo</h2>
+  <div class="col-xs-offset-2 col-xs-8" >
+    <form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off" >
+      <div class="roundBorder" >
+      <fieldset>
+        <div class="form-group">
+          <label for="firstName">Nombre</label>
+          <input style="font-size: 20px;letter-spacing: 2px;" type="text" required id="firstName" name="firstName" class="form-control"
+               data-ng-model="credentials.firstName" placeholder="Nombre" aria-describedby="nombreHelp" required>
+          <small id="nombreHelp" class="form-text text-muted">Nombre completo</small>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Apellido</label>
+          <input style="font-size: 20px;letter-spacing: 2px;" type="text" id="lastName" name="lastName" class="form-control"
+               data-ng-model="credentials.lastName" placeholder="Apellido" aria-describedby="apellidoHelp" required>
+          <small id="apellidoHelp" class="form-text text-muted">Apellido completo</small>
+        </div>
+        <div class="form-group">
+          <label for="dni">DNI</label>
+          <input style="font-size: 20px;letter-spacing: 2px;" type="number" id="dni" name="dni" class="form-control" data-ng-model="credentials.dni"
+               placeholder="DNI" ng-minlength="7" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input style="font-size: 20px;letter-spacing: 2px;" type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email"
+               placeholder="Email" aria-describedby="emailHelp" required>
+          <small id="emailHelp" class="form-text text-muted">El email se usará para activar su cuenta</small>
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input style="font-size: 20px;letter-spacing: 2px;" type="number" id="telefono" name="telefono" class="form-control"
+               data-ng-model="credentials.telefono" placeholder="Teléfono" aria-describedby="telefonoHelp" ng-minlength="10" ng-maxlength="20" required>
+          <small id="telefonoHelp" class="form-text text-muted">Característica + número. Ejemplo: '247715569647'</small>
+        </div>
+        <div class="form-group">
+          <label for="ciudad">Ciudad</label>
+          <select style="font-size: 20px;letter-spacing: 2px;" name="ciudad" class="form-control" placeholder="Ciudad" id="ciudad" ng-model="credentials.ciudad"
+          ng-options="city for city in citys">
+          </select>
+          <small id="ciudadHelp" class="form-text text-muted">Elija dentro de las ciudades en la lista</small>          
+        </div>
+        <div class="form-group">
+          <label for="username">Usuario</label>
+          <input style="font-size: 20px;letter-spacing: 2px;" type="text" id="username" name="username" class="form-control"
+               data-ng-model="credentials.username" placeholder="Usuario" minlength="6" maxlength="12" aria-describedby="usernameHelp" required>
+          <small id="usernameHelp" class="form-text text-muted">El nombre de usuario debe tener más de 6 y menos de 12 caracteres</small>
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input style="font-size: 20px;letter-spacing: 2px;" type="password" id="password" name="password" class="form-control"
+               data-ng-model="credentials.password" placeholder="Contraseña" aria-describedby="passwordHelp" minlength="6" required>
+          <small id="passwordHelp" class="form-text text-muted">La contraseña debe tener más de 6 caracteres</small>
+        </div>
+        <div class="form-group">
+          <label for="passwordCheck">Repita su contraseña</label>
+          <input style="font-size: 20px;letter-spacing: 2px;" type="password" id="pwCheck" name="pwCheck" class="form-control"
+              data-ng-model="credentials.pwCheck" placeholder="Repita su Contraseña" minlength="6" required>
+        </div>
+        <div class="text-center form-group">
+          <button type="submit" style="margin-top: 20px;width: 150px;height: 40px;font-size: 15px" class="btn btn-large btn-primary">Registrar</button>
+        </div>
+          <div data-ng-show="error" class="text-center text-danger animate-if fade in">
+            <strong data-ng-bind="error"></strong>
+          </div>
+      </fieldset>
+      </div>
+    </form>
+  </div>
+</div>

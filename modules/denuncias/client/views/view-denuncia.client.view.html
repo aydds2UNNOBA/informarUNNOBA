@@ -1,0 +1,287 @@
+<head>
+  <style type="text/css">
+    h1{
+      text-align: center;
+      font-size: 50px;
+      color: #5ea5f4;
+      letter-spacing: 3px;
+      word-spacing: 10px;
+      padding-bottom: 15px;
+    }
+    h2{
+      color:#73AD21;margin-bottom: 35px;margin-top: 10px;font-size: 35px;
+    }
+    div .roundBorder{
+      border-radius: 25px;border: 2px solid #73AD21;padding: 12px;text-align: center;
+    }
+    div .innerContent{
+      font-size: 23px;
+    }
+    div .forSpan{
+      padding: 6px;
+      height: 2em;
+    }
+    control-label .modified{
+      color: #a3a3a3;
+    }
+
+
+  </style>
+</head>
+<section>
+  <div class="page-header">
+    <h1>Informe de Denuncia</h1>
+    <div class="row form-group" style="text-align: center">
+    
+   <!-- DATOS DEL USUARIO Y LA FECHA DE CREACION -->
+   <di style="font-size: 16px;align-content: center">
+        <label class="control-label" style="color: grey;">Fecha de alta:</label>
+        <span ng-bind="vm.denuncia.created | date:'mediumDate'"></span>
+        <label style="padding-right: 15px;padding-left: 15px">|</label>
+        <label class="control-label" style="color: grey">Usuario:</label>
+        <span ng-if="vm.denuncia.user"
+            ng-bind="vm.denuncia.user.displayName"></span>
+            <span ng-if="!vm.denuncia.user">Usuario eliminado</span>
+    </div>
+  </div>
+
+
+
+  <div class="col-md-12 content">
+
+    <!-- ********************************DATOS DEL CENTRO DE SALUD******************************** -->
+    <div class="row form-group roundBorder">
+        <h2 align="center">Centro de salud</h2>
+      <div class="col-md-6 innerContent">
+        <label class="control-label" style="color: grey">Centro de Salud</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.hospital"/></div>
+      </div>
+      <div class="col-md-6 innerContent">
+        <label class="control-label" style="color: grey">Centro de Salud Nº</label>
+         <div class="well forSpan"><span ng-bind="vm.denuncia.centro_de_salud"/></div>
+      </div>
+    </div>
+
+    <!-- ********************************DATOS PERSONALES******************************** -->
+    <div class="row form-group roundBorder" >
+
+      <h2 align="center" id="datosPersonales">Datos personales de la victima</h2>
+
+      <div class="col-md-3 innerContent">
+        <label class="control-label" style="color: grey">DNI</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.dni_victima"/></div>
+      </div>
+
+      <div class="col-md-3 innerContent" >
+        <label class="control-label" style="color: grey">Sexo</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.sexo_victima"/></div>
+      </div>
+
+      <div class="col-md-3 innerContent">
+        <label class="control-label" style="color: grey">Edad</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.edad_victima"/></div>
+      </div>
+
+      <div class="col-md-3 innerContent">
+        <label class="control-label" style="color: grey">Estado Civil</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.estado_civil_victima"/></div>
+      </div>
+
+    <div class="row form-group" style="padding-top: 60px">
+
+      <div class="col-md-4 innerContent">
+        <label class="control-label" style="color: grey">Municipio</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.municipio_victima"/></div>
+      </div>
+
+      <div class="col-md-4 innerContent">
+        <label class="control-label" style="color: grey">Localidad</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.localidad_victima"/></div>
+      </div>
+
+      <div class="col-md-4 innerContent">
+        <label class="control-label" style="color: grey">Ocupación</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.ocupacion_victima"/></div>
+      </div>
+
+    </div>
+
+  </div> <!--cierra el div de datos personales-->
+
+    <!-- ********************************DATOS CONSULTANTE******************************** -->
+    <div class="row form-group roundBorder" align="center">
+
+      <h2 align="center">Datos Personales Del Consultante</h2>
+
+      <div class="col-md-4 innerContent">
+        <label class="control-label" style="color: grey">DNI</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.dni_consultante"/></div>
+      </div>
+
+      <div class="col-md-4 innerContent">
+        <label class="control-label" style="color: grey">Municipio</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.municipio_consultante"/></div>
+      </div>
+
+      <div class="col-md-4 innerContent">
+        <label class="control-label" style="color: grey">Localidad</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.localidad_consultante"/></div>
+      </div>
+
+    </div> <!--cierra el div de datos consultante-->
+
+<!-- ********************************ACCIONES REALIZADAS ******************************** -->
+    <div class="row form-group roundBorder" style="margin-top: 50px">
+
+      <h2 align="center">Acciones Realizadas Con La Víctima</h2>
+
+      <div class="col-md-6 innerContent">
+        <label class="control-label" style="color: grey">Internado/a en</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.victima_internada_en"/></div>
+      </div>
+
+      <div class="col-md-6 innerContent">
+        <label class="control-label" style="color: grey">Atendido/a con Equipo de Atención</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.victima_con_equipo_atencion"/></div>
+      </div>
+
+    <div class="row form-group" style="margin-top: 20px">
+
+      <div class="col-md-6 innerContent">
+        <label class="control-label" style="color: grey">Orientado/a a</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.victima_orientada_a"/></div>
+      </div>
+
+      <div class="col-md-6 innerContent">
+        <label class="control-label" style="color: grey">Otros Sectores</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.otros_sectores"/></div>
+      </div>
+
+    </div>
+  </div>
+<!-- ********************************OBSERVACIONES ******************************** -->
+    <div class="row form-group roundBorder" style="margin-top: 50px">
+
+      <h2 align="center">Observaciones</h2>
+
+      <div class="col-md-12 innerContent">
+        <label class="control-label" style="color: grey">Observaciones</label>
+        <div class="well forSpan" style="height: auto;"><span ng-bind="vm.denuncia.observaciones"/></div>
+      </div>
+
+    </div>
+<!-- ********************************ÁREA RECEPTORA DE LA CONSULTA ******************************** -->
+    <div class="row form-group roundBorder" style="margin-top: 50px">
+
+      <h2 align="center">Área Receptora De La Consulta</h2>
+
+      <div class="col-md-6 innerContent">
+        <label class="control-label" style="color: grey">Area Receptora</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.area_receptora"/></div>
+      </div>
+
+      <div class="col-md-6 innerContent">
+        <label class="control-label" style="color: grey">Otras Areas</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.area_receptora_otros"/></div>
+      </div>
+
+    </div>
+<!-- ********************************MOTIVO DE LA CONSULTA ******************************** -->
+    <div class="row form-group roundBorder" style="margin-top: 50px">
+
+      <h2 align="center">Motivo De La Consulta</h2>
+
+      <div class="col-md-6 innerContent">
+        <label class="control-label" style="color: grey">Motivo de la Consulta</label>
+        <div class="well forSpan" style="height: auto;"><span ng-bind="vm.denuncia.motivo_consulta"/></div>
+      </div>
+
+      <div class="col-md-6 innerContent">
+        <label class="control-label" style="color: grey">Otros Motivos</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.motivo_consulta_otros"/></div>
+      </div>
+
+    </div>
+<!-- ********************************VÍNCULO CON EL AGRESOR ******************************** -->
+    <div class="row form-group roundBorder" style="margin-top: 50px" >
+
+      <h2 align="center">Vínculo Con El Agresor</h2>
+
+      <div class="col-md-3 innerContent">
+        <label class="control-label" style="color: grey">Vínculo </label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.vinculo_agresor"/></div>
+      </div>
+
+      <div class="col-md-3 innerContent">
+        <label class="control-label" style="color: grey">Vínculo Familiar</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.vinculo_agresor_familia_especificar"/></div>
+      </div>
+
+      <div class="col-md-3 innerContent">
+        <label class="control-label" style="color: grey">Otros Vínculos</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.vinculo_agresor_otros"/></div>
+      </div>
+
+      <div class="col-md-3 innerContent">
+        <label class="control-label" style="color: grey">Convive </label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.convive_agresor"/></div>
+      </div>
+
+    </div>
+<!-- ********************************HIJOS/AS ******************************** -->
+    <div class="row form-group roundBorder" style="margin-top: 50px">
+
+      <h2 align="center">Hijos/as</h2>
+
+      <div class="col-md-6 innerContent">
+        <label class="control-label" style="color: grey">Hijos</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.hijos.sexo"/></div>
+      </div>
+
+      <div class="col-md-6 innerContent">
+        <label class="control-label" style="color: grey">Edades</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.hijos.edad"/></div>
+      </div>
+
+    </div>
+<!-- ********************************CONSULTAS PREVIAS AL SISTEMA DE SALUD ******************************** -->
+    <div class="row form-group roundBorder" style="margin-top: 50px" >
+
+      <h2 align="center">Consultas Previas Al Sistema De Salud</h2>
+
+      <div class="col-md-4 innerContent">
+        <label class="control-label" style="color: grey">Consultas Previas</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.consultas_cantidad"/></div>
+      </div>
+
+      <div class="col-md-4 innerContent">
+        <label class="control-label" style="color: grey">Consultas en Otro Organismo</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.cuantas_denuncias"/></div>
+      </div>
+
+      <div class="col-md-4 innerContent">
+        <label class="control-label" style="color: grey">Organismo</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.organismos_de_denuncias"/></div>
+      </div>
+
+    </div>
+<!-- ********************************INFORMACIÓN DEL PROFESIONAL ******************************** -->
+    <div class="row form-group roundBorder" style="margin-top: 50px">
+
+      <h2 align="center">Información Del Profesional</h2>
+
+      <div class="col-md-6 innerContent">
+        <label class="control-label" style="color: grey">Nombre del Profesional</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.nombre_profesional"/></div>
+      </div>
+
+      <div class="col-md-6 innerContent">
+        <label class="control-label" style="color: grey">Número de Matrícula</label>
+        <div class="well forSpan"><span ng-bind="vm.denuncia.matricula_profesional"/></div>
+      </div>
+
+    </div>
+
+    </div>
+  </div>
+</section>
