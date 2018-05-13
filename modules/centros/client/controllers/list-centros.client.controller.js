@@ -11,6 +11,9 @@
     var vm = this;
 
     vm.centros = CentrosService.query();
+  
   }
+
+
 
 }());

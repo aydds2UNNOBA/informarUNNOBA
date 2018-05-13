@@ -296,7 +296,7 @@
                 </div>
 
                 <div align="center">
-                    <button type="btn btn-info" style="margin-top: 2em;" class="btn btn-info" ng-click="vm.agregar(sexo_hijo, edad_hijo)">Agregar</button>
+                    <button type="button" style="margin-top: 2em;" class="btn btn-info" ng-click="vm.agregar(sexo_hijo, edad_hijo)">Agregar</button>
                 </div>
               </div>
 
@@ -412,7 +412,7 @@
           
       <div class="form-group" align="center" >
           <button type="submit" class="btn" style="font-size: 2em;width: 5em;margin-right: 2em;background-color: #98d6e3;color: white;margin-top: 80px;margin-bottom: 80px">{{vm.denuncia._id ? 'Modificar' : 'Cargar'}}</button>
-          <button type="submit" class="btn" style="font-size: 2em;width: 5em;background-color: #e396a4;color: white;margin-top: 80px;margin-bottom: 80px"><a data-ui-sref="home">Cancelar</a></button>
+          <button type="button" class="btn" style="font-size: 2em;width: 5em;background-color: #e396a4;color: white;margin-top: 80px;margin-bottom: 80px"><a data-ui-sref="home">Cancelar</a></button>
         </div>
         <div ng-show="vm.error" class="text-danger">
           <strong ng-bind="vm.error"></strong>

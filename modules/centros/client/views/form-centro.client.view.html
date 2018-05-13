@@ -75,11 +75,18 @@
 
                 <div class="col-md-6 innerContent" style="margin-top: 15px"> 
                   <label style="color: grey;" class="control-label" for="municipioCentro">Municipio</label>
-                  <input required name="municipioCentro" type="text" ng-model="vm.centro.municipio_centro" id="municipioCentro" class="form-control" placeholder="Municipio al que pertenece" style="border-color: #016cce;">
+
+                  <select style="border-color: #016cce;" name="municipioCentro" class="form-control" placeholder="Estado Civil" id="municipioCentro" ng-model="vm.centro.municipio_centro" ng-change="municipioCentro()" ng-options="municipio for municipio in municipios"></select>
+
+                  <!-- <input required name="municipioCentro" type="text" ng-model="vm.centro.municipio_centro" id="municipioCentro" class="form-control" placeholder="Municipio al que pertenece" style="border-color: #016cce;"> -->
                 </div>
               <div class="col-md-6 innerContent" style="margin-top: 15px"> 
                 <label style="color: grey;" class="control-label" for="localidadCentro">Localidad</label>
-                <input required name="localidadCentro" type="text" ng-model="vm.centro.localidad_centro" id="localidadCentro" class="form-control" placeholder="Localidad al que pertenece" style="border-color: #016cce;">
+
+                <select style="border-color: #016cce;" name="localidadCentro" class="form-control" id="localidadCentro" ng-model="vm.centro.localidad_centro" ng-options="localidadCentro for localidadCentro in localidadesCentro">
+                </select>
+
+                <!-- <input required name="localidadCentro" type="text" ng-model="vm.centro.localidad_centro" id="localidadCentro" class="form-control" placeholder="Localidad al que pertenece" style="border-color: #016cce;"> -->
 
               </div>
               <div class="col-md-4 innerContent" style="margin-top: 15px"> 
@@ -98,9 +105,10 @@
 
               </div>
 
+
               <div class="col-md-4 innerContent" style="margin-top: 15px"> 
                 <label style="color: grey;" class="control-label" for="telefonoCentro">Telefono principal</label>
-                <input required name="telefonoCentro" type="number" ng-model="vm.centro.telefono_primario" id="telefonoCentro" class="form-control" placeholder="Principal telefono de contacto" style="border-color: #016cce;">
+                <input required name="telefonoCentro" type="number" ng-model="vm.centro.telefono_primario" id="telefonoCentro" class="form-control" placeholder="caracteristica+numero. Ej:2477417556" style="border-color: #016cce;">
 
               </div>
               <div class="col-md-4 innerContent" style="margin-top: 15px"> 

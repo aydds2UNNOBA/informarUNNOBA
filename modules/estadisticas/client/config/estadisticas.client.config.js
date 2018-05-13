@@ -18,14 +18,14 @@
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'estadisticas', {
-      title: 'List Estadisticas',
+      title: 'Consultar Estadisticas',
       state: 'estadisticas.list',
       roles: ['admin']
     });
 
     // Add the dropdown create item
     menuService.addSubMenuItem('topbar', 'estadisticas', {
-      title: 'Create Estadistica',
+      title: 'Administrar Indicadores',
       state: 'estadisticas.create',
       roles: ['admin']
     });
