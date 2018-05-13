@@ -1,10 +1,11 @@
 <section>
   <div class="row">
     <div class="page-header" >
-      <h1>Denuncias Registradas</h1>
+      <h1 style="color:#73AD21;margin-bottom: 15px;margin-top: 10px;font-size: 40px;" align="center">Denuncias registradas</h1>
     </div>
     <div class="col-md-12" align="center">
-      <h3>Filtrar Denuncias</h3>
+      <h3 style="margin-bottom: 15px">Filtrar Denuncias</h3>
+      <p style="color: grey">Puede seleccionar hasta 3 campos para filtrar las denuncias</p>
 
       <div class="form-group col-md-3">
 
@@ -66,41 +67,30 @@
     </div>
   </div>
   <div class="list-group" data-ng-controller="HeaderController">
-    <div data-ng-repeat="denuncia in pagedItems" ng-if="authentication.user._id">
+    <div align="center" data-ng-repeat="denuncia in pagedItems" ng-if="authentication.user._id">
     <a data-ui-sref="denuncias.view({ denunciaId: denuncia._id })" class="list-group-item">
+      <div class="row" >
+        
       <small class="list-group-item-text" >
-        Creado el
-        <span ng-bind="denuncia.created | date:'mediumDate'"></span>
-        por
-        <span ng-if="denuncia.user" ng-bind="denuncia.user.displayName"></span>
-        <span ng-if="!denuncia.user">Usuario Eliminado</span>
+        <p style="font-size: 14px">Usuario: <span style="font-size: 18px;color: #73AD21" ng-if="denuncia.user" ng-bind="denuncia.user.displayName"></span></p>
+        <p style="font-size: 14px"><span style="font-size: 18px;color: red" ng-if="!denuncia.user">Usuario Eliminado</span></p>
       </small>
+        
+      </div>
+      <div class="row">
+        
+      <small class="list-group-item-text" >
+        <p style="font-size: 14px">Creada: <span style="font-size: 14px;" ng-bind="denuncia.created | date:'mediumDate'"></span></p>
+      </small>
+        
+      </div>
       <h4 class="list-group-item-heading" ng-bind="denuncia.name"></h4>
     </a>
     
   </div>
 </div>
-  <pagination boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+<div align="center">
+  <pagination  boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+</div>
 </section>
-<!--<div class="row">
-    <div class="page-header" >
-      <h1>Denuncias Registradas</h1>
-    </div>
-    <div class="col-md-12 page-header">
-      <div class="form-group col-md-4">
-        <select name="filtrado_UNO" class="form-control" id="filtrado_UNO" ng-model="select_uno" ng-options="campo for campo in campos_a_filtrar">
-        </select>
-        <input class="form-control col-md-4" type="text" data-ng-model="search_uno" placeholder="Buscar" ng-change="figureOutItemsToDisplay()" />
-      </div>
-      <div class="form-group col-md-4">
-        <select name="filtrado_DOS" class="form-control" id="filtrado_DOS" ng-model="select_dos" ng-options="campo for campo in campos_a_filtrar">
-        </select>
-        <input class="form-control col-md-4" type="text" data-ng-model="search_dos" placeholder="Buscar" ng-change="figureOutItemsToDisplay()" />
-      </div>
-      <div class="form-group col-md-4">
-        <select name="filtrado_TRES" class="form-control" id="filtrado_TRES" ng-model="select_tres" ng-options="campo for campo in campos_a_filtrar">
-        </select>
-        <input class="form-control col-md-4" type="text" data-ng-model="search_tres" placeholder="Buscar" ng-change="figureOutItemsToDisplay()" />
-      </div>
-    </div>
-  </div>-->
+>
