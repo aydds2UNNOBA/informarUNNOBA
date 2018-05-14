@@ -233,15 +233,29 @@
 
       <h2 align="center">Hijos/as</h2>
 
-      <div class="col-md-6 innerContent">
-        <label class="control-label" style="color: grey">Hijos</label>
-        <div class="well forSpan"><span ng-bind="vm.denuncia.hijos.sexo"/></div>
+
+        
+      <div class="col-md-6" align="right">
+        <h2 style="font-size: 30px;color: grey;margin-right: 12px"> Sexo</h2>
+      </div>
+      <div class="col-md-6" align="left">
+        <h2 style="font-size: 30px;color: grey; margin-left: 25px"> Edad </h2>
+      </div>
+      <div >
+        <ul>
+          <li style="list-style: none;" ng-repeat="hijo in vm.denuncia.hijos">
+            <div align="right" class="col-md-6" style="padding: 22px">
+              <span style="font-size: 18px" class="well">{{hijo.sexo}}</span>
+          </div>
+
+          <div  style="padding: 22px" align="left"  class="col-md-6" >
+              <span class="well" style="font-size: 18px;">{{hijo.edad}}</span>
+          </div>
+        </li>
+          
+        </ul>
       </div>
 
-      <div class="col-md-6 innerContent">
-        <label class="control-label" style="color: grey">Edades</label>
-        <div class="well forSpan"><span ng-bind="vm.denuncia.hijos.edad"/></div>
-      </div>
 
     </div>
 <!-- ********************************CONSULTAS PREVIAS AL SISTEMA DE SALUD ******************************** -->
